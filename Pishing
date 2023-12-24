@@ -5,3 +5,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PhishingKeywordCounter {
+ public static void main(String[] args) {
+        Map<String, Integer> keywordPoints = new HashMap<>();
+        keywordPoints.put("www.phishing-website.com", 3);
+        keywordPoints.put("account password", 2);
+        keywordPoints.put("security code", 2);
+        keywordPoints.put("update your account information", 2);
+        keywordPoints.put("important bank notice", 2);
+        keywordPoints.put("your bank account", 1);
+        keywordPoints.put("www.fake-bank.com", 1);
+        keywordPoints.put("password reminder", 1);
+        keywordPoints.put("update your personal information", 1);
+        keywordPoints.put("password assistance", 1);
+
+        int totalPoints = 0;
