@@ -19,3 +19,22 @@ public class PhishingKeywordCounter {
         keywordPoints.put("password assistance", 1);
 
         int totalPoints = 0;
+
+        try (BufferedReader br = new BufferedReader(new FileReader("message.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                for (Map.Entry<String, Integer> entry : keywordPoints.entrySet()) {
+                    int count = (line.length() - line.replace(entry.getKey(), "").length()) / entry.getKey().length();
+                    if (count > 0) {
+                        System.out.println(entry.getKey() + ": " + count + " occurrences, " + (count * entry.getValue()) + " points");
+                        totalPoints += count * entry.getValue();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Total points: " + totalPoints);
+    }
+}
